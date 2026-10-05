@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #F8FAFC;
+    font-family: Arial, sans-serif;
+  }
+
+  .ticker {
+    width: 100%;
+    height: 34px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #E2E8F0;
+    border-bottom: 1px solid #E2E8F0;
+    color: #475467;
+  }
+
+  .ticker-text {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    font-size: 12px;
+    animation: scroll 32s linear infinite;
+  }
+
+  .title {
+    color: #1D4ED8;
+    font-weight: 700;
+  }
+
+  .new-business {
+    color: #7F56D9;
+    font-weight: 700;
+  }
+
+  .part-payment {
+    color: #B7791F;
+    font-weight: 700;
+  }
+
+  .upgrade {
+    color: #F79009;
+    font-weight: 700;
+  }
+
+  .lifecycle {
+    color: #175CD3;
+    font-weight: 700;
+  }
+
+  .renewal {
+    color: #6941C6;
+    font-weight: 700;
+  }
+
+  .unclassified {
+    color: #475467;
+    font-weight: 700;
+  }
+
+  .new-retail {
+    color: #7F56D9;
+    font-weight: 700;
+  }
+
+  .new-other {
+    color: #829B2F;
+    font-weight: 700;
+  }
+
+  .new-lifetime {
+    color: #0E9384;
+    font-weight: 700;
+  }
+
+  .other {
+    color: #175CD3;
+    font-weight: 700;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="ticker">
+  <div class="ticker-text">
+
+    <span class="title">MIX GUIDE</span>
+
+    &nbsp;&nbsp;•&nbsp;&nbsp;
+
+    <span class="title">REVENUE MIX</span>
+
+    &nbsp;:&nbsp;
+
+    <span class="new-business">NEW BUSINESS</span>
+    = New Sales
+
+    &nbsp;&nbsp;•&nbsp;&nbsp;
+
+    <span class="part-payment">PART PAYMENT</span>
+    = Partial Payments
+
+    &nbsp;&nbsp;•&nbsp;&nbsp;
+
+    <span class="upgrade">UPGRADE</span>
+    = Existing Customer Upgrades
+
+    &nbsp;&nbsp;•&nbsp;&nbsp;
+
+    <span class="lifecycle">LIFECYCLE</span>
+    = Pre-Expiry / Expired / Deactivated
+
+    &nbsp;&nbsp;•&nbsp;&nbsp;
+
+    <span class="renewal">RENEWAL</span>
+    = Renewal / Tranche / Existing
+
+    &nbsp;&nbsp;•&nbsp;&nbsp;
+
+    <span class="unclassified">UNCLASSIFIED</span>
+    = Unmapped Scenarios
+
+    &nbsp;&nbsp;&nbsp;&nbsp;◆&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <span class="title">ACQUISITION MIX</span>
+
+    &nbsp;:&nbsp;
+
+    <span class="new-retail">NEW RETAIL</span>
+    = New Retail Customers
+
+    &nbsp;&nbsp;•&nbsp;&nbsp;
+
+    <span class="new-lifetime">NEW LIFETIME</span>
+    = Dhanwaan / Retail PMP
+
+    &nbsp;&nbsp;•&nbsp;&nbsp;
+
+    <span class="new-other">NEW OTHER</span>
+    = Other New Customers
+
+    &nbsp;&nbsp;•&nbsp;&nbsp;
+
+    <span class="upgrade">UPGRADE</span>
+    = Existing Customer Upgrades
+
+    &nbsp;&nbsp;•&nbsp;&nbsp;
+
+    <span class="other">OTHER</span>
+    = Other First-Payment Acquisitions
+
+  </div>
+</div>
+
+</body>
+</html>
