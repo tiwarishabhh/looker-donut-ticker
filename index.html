@@ -5,209 +5,597 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  * {
-    box-sizing: border-box;
+
+/* =========================================
+   GLOBAL
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 50px;
+
+  overflow: hidden;
+
+  background: #F8FAFC;
+
+  font-family: Roboto, Arial, sans-serif;
+
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================
+   MAIN WRAPPER
+   ========================================= */
+
+.wrapper {
+  width: 100%;
+  height: 50px;
+
+  display: grid;
+  grid-template-rows: 30px 20px;
+
+  overflow: hidden;
+
+  background: #F8FAFC;
+
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================
+   TICKER
+   ========================================= */
+
+.ticker {
+  grid-row: 1;
+
+  width: 100%;
+  height: 30px;
+
+  overflow: hidden;
+  white-space: nowrap;
+
+  background: #F8FAFC;
+
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+
+/* =========================================
+   MOVING TEXT
+   ========================================= */
+
+.ticker-text {
+  display: inline-block;
+  white-space: nowrap;
+
+  padding-left: 100%;
+
+  font-size: 11px;
+  line-height: 30px;
+  font-weight: 400;
+
+  color: #667085;
+
+  animation: scroll 38s linear infinite;
+
+  will-change: transform;
+
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================
+   SECTION HEADINGS
+   ========================================= */
+
+.title {
+  color: #344054;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   PERIOD VIEW
+   ========================================= */
+
+.period {
+  color: #0F6B78;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   REVENUE MIX
+   ========================================= */
+
+.new-business {
+  color: #137A4A;
+  font-weight: 600;
+}
+
+.part-payment {
+  color: #B54708;
+  font-weight: 600;
+}
+
+.upgrade {
+  color: #6941C6;
+  font-weight: 600;
+}
+
+.lifecycle {
+  color: #B42318;
+  font-weight: 600;
+}
+
+.renewal {
+  color: #175CD3;
+  font-weight: 600;
+}
+
+.unclassified {
+  color: #475467;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   ACQUISITION MIX
+   ========================================= */
+
+.new-retail {
+  color: #7F56D9;
+  font-weight: 600;
+}
+
+.new-lifetime {
+  color: #0E9384;
+  font-weight: 600;
+}
+
+.new-other {
+  color: #829B2F;
+  font-weight: 600;
+}
+
+.acq-upgrade {
+  color: #6941C6;
+  font-weight: 600;
+}
+
+.other {
+  color: #175CD3;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   NORMAL DESCRIPTION
+   ========================================= */
+
+.description {
+  color: #667085;
+  font-weight: 400;
+}
+
+
+/* =========================================
+   SEPARATORS
+   ========================================= */
+
+.separator {
+  color: #98A2B3;
+  padding: 0 12px;
+}
+
+.section-separator {
+  color: #98A2B3;
+  padding: 0 18px;
+  font-weight: 400;
+}
+
+
+/* =========================================
+   CONTROL ROW
+   ========================================= */
+
+.controls {
+  grid-row: 2;
+
+  width: 100%;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding-right: 8px;
+
+  background: #F8FAFC;
+
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+
+/* =========================================
+   PLAY / PAUSE BUTTON
+   ========================================= */
+
+.play-pause-btn {
+  width: 30px;
+  height: 18px;
+
+  margin: 0;
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #FFFFFF;
+  color: #475467;
+
+  border: 1px solid #D0D5DD;
+  border-radius: 6px;
+
+  outline: none;
+  box-shadow: none;
+
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.play-pause-btn:hover {
+  background: #F2F4F7;
+  color: #344054;
+  border-color: #98A2B3;
+}
+
+.play-pause-btn:active {
+  background: #E4E7EC;
+}
+
+
+/* =========================================
+   PAUSED STATE
+   ========================================= */
+
+.ticker.paused .ticker-text {
+  animation-play-state: paused;
+}
+
+
+/* =========================================
+   CONTINUOUS SCROLL
+   ========================================= */
+
+@keyframes scroll {
+
+  from {
+    transform: translateX(0);
   }
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #F8FAFC;
-    font-family: Arial, sans-serif;
+  to {
+    transform: translateX(-100%);
   }
 
-  .ticker {
-    width: 100%;
-    height: 34px;
-    overflow: hidden;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    border-top: 1px solid #E2E8F0;
-    border-bottom: 1px solid #E2E8F0;
-    color: #475467;
-  }
+}
 
-  .ticker-text {
-    display: inline-block;
-    white-space: nowrap;
-    padding-left: 100%;
-    font-size: 12px;
-    animation: scroll 38s linear infinite;
-  }
-
-  .title {
-    color: #1D4ED8;
-    font-weight: 700;
-  }
-
-  .momentum {
-    color: #0F6B78;
-    font-weight: 700;
-  }
-
-  .new-business {
-    color: #7F56D9;
-    font-weight: 700;
-  }
-
-  .part-payment {
-    color: #B7791F;
-    font-weight: 700;
-  }
-
-  .upgrade {
-    color: #F79009;
-    font-weight: 700;
-  }
-
-  .lifecycle {
-    color: #175CD3;
-    font-weight: 700;
-  }
-
-  .renewal {
-    color: #6941C6;
-    font-weight: 700;
-  }
-
-  .unclassified {
-    color: #475467;
-    font-weight: 700;
-  }
-
-  .new-retail {
-    color: #7F56D9;
-    font-weight: 700;
-  }
-
-  .new-other {
-    color: #829B2F;
-    font-weight: 700;
-  }
-
-  .new-lifetime {
-    color: #0E9384;
-    font-weight: 700;
-  }
-
-  .other {
-    color: #175CD3;
-    font-weight: 700;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-
-    100% {
-      transform: translateX(-100%);
-    }
-  }
 </style>
 </head>
 
+
 <body>
 
-<div class="ticker">
-  <div class="ticker-text">
+<div class="wrapper">
 
-    <span class="title">MIX GUIDE</span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+  <!-- =====================================
+       MIX / PERIOD GUIDE
+       ===================================== -->
 
-    <span class="momentum">CENTRE %</span>
-    = Selected Period Performance vs Comparable Previous Period
+  <div class="ticker" id="ticker">
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+    <div class="ticker-text">
 
-    <span class="momentum">QTD</span>
-    = Current Quarter-to-Date vs Previous Quarter Same Period
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+      <!-- PERIOD VIEW -->
 
-    <span class="momentum">MTD</span>
-    = Current Month-to-Date vs Previous Month Same Period
+      <span class="title">
+        PERIOD VIEW GUIDE
+      </span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+      <span class="separator">•</span>
 
-    <span class="momentum">PREVIOUS QTD</span>
-    = Previous Quarter-to-Date vs Quarter Before Same Period
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+      <span class="period">
+        LAST 30 DAYS
+      </span>
 
-    <span class="momentum">LAST QUARTER</span>
-    = Full Previous Quarter vs Full Quarter Before
+      <span class="description">
+        = Latest 30 Calendar Days vs Immediately Preceding 30 Calendar Days
+      </span>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;◆&nbsp;&nbsp;&nbsp;&nbsp;
 
-    <span class="title">REVENUE MIX</span>
+      <span class="separator">•</span>
 
-    &nbsp;:&nbsp;
 
-    <span class="new-business">NEW BUSINESS</span>
-    = New Sales
+      <span class="period">
+        MTD
+      </span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+      <span class="description">
+        = Current Month-to-Date vs Previous Month Same Period
+      </span>
 
-    <span class="part-payment">PART PAYMENT</span>
-    = Partial Payments
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+      <span class="separator">•</span>
 
-    <span class="upgrade">UPGRADE</span>
-    = Existing Customer Upgrades
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+      <span class="period">
+        PREVIOUS QTD
+      </span>
 
-    <span class="lifecycle">LIFECYCLE</span>
-    = Pre-Expiry / Expired / Deactivated
+      <span class="description">
+        = Previous Quarter-to-Date vs Quarter Before Same Period
+      </span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
 
-    <span class="renewal">RENEWAL</span>
-    = Renewal / Tranche / Existing
+      <span class="separator">•</span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
 
-    <span class="unclassified">UNCLASSIFIED</span>
-    = Unmapped Scenarios
+      <span class="period">
+        LAST QUARTER
+      </span>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;◆&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="description">
+        = Full Previous Quarter vs Full Quarter Before
+      </span>
 
-    <span class="title">ACQUISITION MIX</span>
 
-    &nbsp;:&nbsp;
+      <!-- SECTION DIVIDER -->
 
-    <span class="new-retail">NEW RETAIL</span>
-    = New Retail Customers
+      <span class="section-separator">
+        ◆
+      </span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
 
-    <span class="new-lifetime">NEW LIFETIME</span>
-    = Dhanwaan / Retail PMP
+      <!-- REVENUE MIX -->
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+      <span class="title">
+        REVENUE MIX
+      </span>
 
-    <span class="new-other">NEW OTHER</span>
-    = Other New Customers
+      <span class="separator">•</span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
 
-    <span class="upgrade">UPGRADE</span>
-    = Existing Customer Upgrades
+      <span class="new-business">
+        NEW BUSINESS
+      </span>
 
-    &nbsp;&nbsp;•&nbsp;&nbsp;
+      <span class="description">
+        = Revenue from New Customer Business
+      </span>
 
-    <span class="other">OTHER</span>
-    = Other First-Payment Acquisitions
+
+      <span class="separator">•</span>
+
+
+      <span class="part-payment">
+        PART PAYMENT
+      </span>
+
+      <span class="description">
+        = Retail PMP &amp; Dhanwaan PMP Part-Payment Revenue
+      </span>
+
+
+      <span class="separator">•</span>
+
+
+      <span class="upgrade">
+        UPGRADE
+      </span>
+
+      <span class="description">
+        = Existing Customer Product / Plan Upgrade Revenue
+      </span>
+
+
+      <span class="separator">•</span>
+
+
+      <span class="lifecycle">
+        LIFECYCLE
+      </span>
+
+      <span class="description">
+        = Before Expiry, Expired &amp; Deactivated Customer Revenue
+      </span>
+
+
+      <span class="separator">•</span>
+
+
+      <span class="renewal">
+        RENEWAL
+      </span>
+
+      <span class="description">
+        = Renewal, Tranche &amp; Existing Customer Revenue
+      </span>
+
+
+      <span class="separator">•</span>
+
+
+      <span class="unclassified">
+        UNCLASSIFIED
+      </span>
+
+      <span class="description">
+        = Unknown / Unmapped Source Scenarios
+      </span>
+
+
+      <!-- SECTION DIVIDER -->
+
+      <span class="section-separator">
+        ◆
+      </span>
+
+
+      <!-- ACQUISITION MIX -->
+
+      <span class="title">
+        ACQUISITION MIX
+      </span>
+
+      <span class="separator">•</span>
+
+
+      <span class="new-retail">
+        NEW RETAIL
+      </span>
+
+      <span class="description">
+        = New Retail Customer Acquisitions
+      </span>
+
+
+      <span class="separator">•</span>
+
+
+      <span class="new-lifetime">
+        NEW LIFETIME
+      </span>
+
+      <span class="description">
+        = New Dhanwaan &amp; Retail PMP Customer Acquisitions
+      </span>
+
+
+      <span class="separator">•</span>
+
+
+      <span class="new-other">
+        NEW OTHER
+      </span>
+
+      <span class="description">
+        = Multiplyrr &amp; Other New Customer Acquisitions
+      </span>
+
+
+      <span class="separator">•</span>
+
+
+      <span class="acq-upgrade">
+        UPGRADE
+      </span>
+
+      <span class="description">
+        = Existing Customer Upgrade Acquisitions
+      </span>
+
+
+      <span class="separator">•</span>
+
+
+      <span class="other">
+        OTHER
+      </span>
+
+      <span class="description">
+        = Other First-Payment Acquisitions
+      </span>
+
+
+    </div>
 
   </div>
+
+
+  <!-- =====================================
+       PLAY / PAUSE
+       ===================================== -->
+
+  <div class="controls">
+
+    <button
+      id="playPauseBtn"
+      class="play-pause-btn"
+      type="button"
+      title="Pause"
+      aria-label="Pause"
+    >
+      Ⅱ
+    </button>
+
+  </div>
+
+
 </div>
+
+
+<script>
+
+const ticker =
+  document.getElementById("ticker");
+
+const button =
+  document.getElementById("playPauseBtn");
+
+
+button.addEventListener("click", function () {
+
+  const paused =
+    ticker.classList.toggle("paused");
+
+
+  if (paused) {
+
+    button.textContent = "▶";
+    button.title = "Play";
+    button.setAttribute("aria-label", "Play");
+
+  } else {
+
+    button.textContent = "Ⅱ";
+    button.title = "Pause";
+    button.setAttribute("aria-label", "Pause");
+
+  }
+
+});
+
+</script>
+
 
 </body>
 </html>
